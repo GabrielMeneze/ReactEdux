@@ -1,13 +1,24 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import Home from './pages/home';
+import NaoEncontrada from './pages/naoencontrada'
+
+const routing = (
+  <Router>
+    <Switch>
+      <Route exact path ="/" component={Home} />
+      <Route path ="/naoencontrada" component={NaoEncontrada} />
+    </Switch>
+  </Router>
+)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  routing,
   document.getElementById('root')
 );
 
