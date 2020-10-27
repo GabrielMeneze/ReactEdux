@@ -12,18 +12,15 @@ const Home = () => {
                     <img
                         className="d-block w-100"
                         src="https://media-exp1.licdn.com/dms/image/C561BAQF4ImXQA9JqnA/company-background_10000/0?e=2159024400&v=beta&t=VPAXeefZUSD53KAJICque7AHlm2feGnOs9jGdGNljKw"
-                        alt="First slide"
+                        alt="Banner do SENAI"
                     />
                 </Carousel.Item>
             </Carousel>
-            <Jumbotron className="text-center">
-                <h1>Diversos eventos em um único local</h1>
+            <Jumbotron className="text-center" style={{background : '#400B1E'}}>
+                <h1 style={{marginBottom : '1em', color : 'white'}}>A melhor escola técnica do <strong>Brasil</strong>!!!</h1>
                 <p>
-                    Encontre eventos nos mais diversos segmentos de forma rápida
-                </p>
-                <p>
-                    <Button variant="warning" href="/login">Login</Button>
-                    <Button variant="danger" href="/cadastrar" style={{ marginLeft: '30px' }}>Cadastrar</Button>
+                    <Button variant="warning" href="/login" >Login</Button>
+                    <Button variant="success" href="/cadastrar" style={{ marginLeft: '30px'}}>Cadastrar</Button>
                 </p>
             </Jumbotron>
             <Container>
