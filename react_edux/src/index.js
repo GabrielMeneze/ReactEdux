@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home';
 import Login from './pages/login';
-import NaoEncontrada from './pages/naoencontrada'
 import CrudInsituicao from './pages/admin/crudinstituicao';
+import NaoEncontrada from './pages/naoencontrada'
 
 const routing = (
   <Router>

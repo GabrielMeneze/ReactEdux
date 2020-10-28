@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import jwt_decode from 'jwt-decode'
 import logoBranco from '../../assets/img/logoBranco.png'
 
@@ -37,7 +37,7 @@ const Menu = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <NavDropdown.Item href="/admin/crudinsituicao">Instituições</NavDropdown.Item>
+                            <Dropdown.Item href="/admin/crudinstituicao">Instituições</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
@@ -46,9 +46,9 @@ const Menu = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <NavDropdown.Item href="/perfil">Perfil</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item onClick={event => sair(event)} >Sair</NavDropdown.Item>
+                            <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={event => sair(event)} >Sair</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Nav>
