@@ -1,9 +1,13 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import './index'
 
 const Rodape = () => {
     return (
-        <footer className="text-center" style={{ marginTop: '70px' }}>
-            <h1>SENAI Informática</h1>
+        <footer className="text-center" style={{background: '#282828', color: 'white', padding: '3em', marginTop : '5em'}}>
+            <div>
+                <p>Todos os Direitos Reservados - SENAI SP.</p>
+            </div>
             <small>Desenvolvido por <strong>The Boys</strong></small>
         </footer>
     );
