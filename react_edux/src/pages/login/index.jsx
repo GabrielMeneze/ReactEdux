@@ -42,7 +42,7 @@ const Login = () => {
 
                 let usuario = jwt_decode(data.token)
 
-                console.log(data)
+                console.log(jwt_decode(data.token))
 
                 // Role = 1 (Administrador)
                 // Role = 2 (Padrão)
