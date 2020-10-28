@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home';
 import Login from './pages/login';
+import Turma from './pages/turma';
 import NaoEncontrada from './pages/naoencontrada'
 
 const routing = (
@@ -14,6 +15,7 @@ const routing = (
     <Switch>
       <Route exact path ="/" component={Home} />
       <Route path="/login" component={Login} />
+      <Route path="/turma" component={Turma} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>
   </Router>
