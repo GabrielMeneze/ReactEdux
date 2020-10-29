@@ -42,7 +42,7 @@ const Login = () => {
 
                 let usuario = jwt_decode(data.token)
 
-                console.log(data)
+                console.log(jwt_decode(data.token))
 
                 // Role = 1 (Administrador)
                 // Role = 2 (Padrão)
@@ -59,12 +59,12 @@ const Login = () => {
     }
 
     return (
-        <div style={{background : '#2a2a2a'}}>
+        <div style={{ background: '#2a2a2a' }}>
             <Menu />
-            <Container className='form-height'style={{borderRadius : '10px', marginBottom : '8.1em', marginTop : '6em', color : 'white'}}>
+            <Container className='form-height' style={{ borderRadius: '10px', marginBottom: '8.1em', marginTop: '6em', color: 'white' }}>
                 <Form className='form-signin' onSubmit={event => logar(event)} >
                     <div className="text-center">
-                        <img src={logoColorida} alt="Nyous" style={{ width: "128px",}} />
+                        <img src={logoColorida} alt="Nyous" style={{ width: "128px", }} />
                     </div>
                     <br />
                     <small>Informe os dados Abaixo</small>
@@ -85,7 +85,7 @@ const Login = () => {
                     </Button>
 
                     <br /><br />
-                    <a href="/cadastrar" style={{ marginTop: '30px', color : '#00C2EE' }}>Não tenho conta!</a>
+                    <a href="/cadastrar" style={{ marginTop: '30px', color: '#00C2EE' }}>Não tenho conta!</a>
 
                 </Form>
             </Container>
