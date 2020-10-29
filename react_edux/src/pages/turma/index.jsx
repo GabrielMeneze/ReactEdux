@@ -24,22 +24,6 @@ const Turma = () => {
                             <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Objetivos</Button>
                             </p>
                         </div>
-                        <div className ='caixa'>
-                            <br/>
-                            <h5 className ='title'>Desenvolvimento de Sistemas (Vespertino)</h5>
-                            <hr/>
-                            <p>
-                            <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Descrição</Button>
-                            <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Objetivos</Button>                            </p>
-                        </div>
-                        <div className ='caixa'>
-                            <br/>
-                            <h5 className ='title'>Desenvolvimento de Sistemas (Noturno)</h5>
-                            <hr/>
-                            <p>
-                            <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Descrição</Button>
-                            <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Objetivos</Button>                            </p>
-                        </div>
                     </div>
 
             </Container>
