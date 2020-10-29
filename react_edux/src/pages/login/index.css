@@ -38,6 +38,7 @@ html,
 
 .form-signin input[type="email"] {
     background-color: #2a2a2a;
+    color : white;
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -45,6 +46,7 @@ html,
 
 .form-signin input[type="password"] {
     background-color: #2a2a2a;
+    color : white;
     margin-bottom: 10px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
