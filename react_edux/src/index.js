@@ -9,6 +9,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
+import CrudCurso from './pages/admin/crudcurso';
 
 const routing = (
   <Router>
@@ -16,6 +17,7 @@ const routing = (
       <Route exact path ="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path ="/admin/crudinstituicao" component={CrudInsituicao} />
+      <Route path ="/admin/crudcurso" component={CrudCurso} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>
   </Router>
