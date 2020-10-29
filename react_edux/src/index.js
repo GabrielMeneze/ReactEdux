@@ -10,6 +10,7 @@ import Login from './pages/login';
 import Turma from './pages/turma';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
+import CrudCurso from './pages/admin/crudcurso';
 
 const routing = (
   <Router>
@@ -18,6 +19,7 @@ const routing = (
       <Route path="/login" component={Login} />
       <Route path="/turma" component={Turma} />
       <Route path ="/admin/crudinstituicao" component={CrudInsituicao} />
+      <Route path ="/admin/crudcurso" component={CrudCurso} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>
   </Router>
