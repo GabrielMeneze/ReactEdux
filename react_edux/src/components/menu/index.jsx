@@ -57,7 +57,6 @@ const Menu = () => {
         } else {
             return (
                 <Nav>
-                    <Nav.Link href="/curso" alt="Página inicial" style={{ color: '#00C2EE' }}><strong>Cursos</strong></Nav.Link>
                     <Dropdown>
                         <Dropdown.Toggle style={{ color: '#00D65F' }} variant="dark" id="dropdown-basic">
                             <strong>{jwt_decode(token).nameid}</strong>
