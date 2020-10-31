@@ -53,11 +53,11 @@ const Home = () => {
                         <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src="https://fluxoconsultoria.poli.ufrj.br/wp-content/uploads/2015/05/thinkstockphotos-896358708.jpg" />
                             <Card.Body>
-                                <Card.Title>Objetivos</Card.Title>
+                                <Card.Title>Turmas</Card.Title>
                                 <Card.Text>
-                                    Informações de objetivos de cada turma SENAI.
+                                    Informações de cada turma SENAI.
                                 </Card.Text>
-                                <Button variant="danger">Ir para página de objetivos</Button>
+                                <Button variant="danger">Ir para página de turmas</Button>
                             </Card.Body>
                         </Card>
                     </Col>
