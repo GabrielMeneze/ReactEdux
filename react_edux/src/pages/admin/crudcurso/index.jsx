@@ -7,6 +7,7 @@ import Titulo from '../../../components/titulo'
 
 const CrudCurso = () => {
     const [idCurso, setIdCurso] = useState(0);
+    const [idInstituicao, setIdInstituicao] = useState(0);
     const [titulo, setTitulo] = useState('');
     const [cursos, setCursos] = useState([]);
     const [instituicoes, setInstituicoes] = useState([]);
@@ -16,21 +17,21 @@ const CrudCurso = () => {
         listarInsitiuicao()
     }, []);
 
+    const listarInsitiuicao = () => {
+            fetch(url + 'instituicao')
+                .then(response => response.json())
+                .then(data => {
+                    setInstituicoes(data.data);
+                    limparCampos();
+                })
+                .catch(err => console.error(err));
+        }
+
     const listarCursos = () => {
         fetch(url + 'curso')
             .then(response => response.json())
             .then(data => {
                 setCursos(data.data);
-                limparCampos();
-            })
-            .catch(err => console.error(err));
-    }
-
-    const listarInsitiuicao = () => {
-        fetch(url + 'instituicao')
-            .then(response => response.json())
-            .then(data => {
-                setInstituicoes(data.data);
                 limparCampos();
             })
             .catch(err => console.error(err));
@@ -44,6 +45,7 @@ const CrudCurso = () => {
             .then(dado => {
                 console.log(dado)
                 setIdCurso(dado.idCurso)
+                setIdInstituicao(dado.idInstituicao)
                 setTitulo(dado.titulo)
             })
     }
@@ -70,7 +72,8 @@ const CrudCurso = () => {
         event.preventDefault();
 
         const curso = {
-            titulo: titulo
+            titulo: titulo,
+            idInstituicao : idInstituicao
         }
 
         let method = (idCurso === 0 ? 'POST' : 'PUT')
@@ -93,6 +96,7 @@ const CrudCurso = () => {
 
     const limparCampos = () => {
         setIdCurso(0);
+        setIdInstituicao(0);
         setTitulo('');
     }
 
@@ -113,11 +117,11 @@ const CrudCurso = () => {
                             </Form.Group>
                             <Form.Group controlId="formBasicPerfil">
                                 <Form.Label>Instituição</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control as="select" size="sg" custom defaultValue={idInstituicao} onChange={event => setIdInstituicao(event.target.value)}>
                                     {
                                         instituicoes.map((item, index) => {
                                             return (
-                                                <option value={item.idInstituicao}>{item.nome}</option>
+                                                <option key={index} value={item.idInstituicao}>{item.nome}</option>
                                             )
                                         })
                                     }
@@ -141,7 +145,7 @@ const CrudCurso = () => {
                                 return (
                                     <tr key={index}>
                                         <td>{item.titulo}</td>
-                                        <td>{item.nome}</td>
+                                        <td>{item.idInstituicao}</td>
                                         <td style={{ display: 'flex' }}>
                                             <Button variant="info" value={item.idCurso} onClick={event => editar(event)} >Editar</Button>
                                             <Button variant="danger" value={item.idCurso} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
