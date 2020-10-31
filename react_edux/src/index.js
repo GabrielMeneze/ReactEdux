@@ -9,9 +9,11 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Home from './pages/home';
 import Login from './pages/login';
 import Curso from './pages/curso';
+import Turma from './pages/turma';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
 import CrudCurso from './pages/admin/crudcurso';
+import CrudTurma from './pages/admin/crudturma';
 
 const RotaPrivada = ({ component: Component, ...rest }) => (
   <Route
@@ -41,8 +43,10 @@ const routing = (
       <Route exact path ="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/curso" component={Curso} />
+      <RotaPrivada path="/turma" component={Turma} />
       <RotaPrivadaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />
       <RotaPrivadaAdmin path ="/admin/crudcurso" component={CrudCurso} />
+      <RotaPrivadaAdmin path ="/admin/crudturma" component={CrudTurma} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>
   </Router>
