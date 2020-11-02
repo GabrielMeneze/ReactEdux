@@ -32,7 +32,7 @@ const RotaPrivadaAdmin = ({ component: Component, ...rest }) => (
     render={props =>
       localStorage.getItem('token-edux') !== null && jwt_decode(localStorage.getItem('token-edux')).Role === "1" ?
         (<Component {...props} />) :
-        (<Redirect to={{ pathname: '/acessonegado', state: { from: props.location } }} />)
+        (<Redirect to={{ pathname: '/login', state: { from: props.location } }} />)
     }
   />
 );

@@ -14,14 +14,15 @@ const CrudCurso = () => {
 
     useEffect(() => {
         listarCursos()
-        listarInsitiuicao()
+        listarInstitiuicao()
     }, []);
 
-    const listarInsitiuicao = () => {
+    const listarInstitiuicao = () => {
         fetch(url + 'instituicao')
             .then(response => response.json())
             .then(data => {
                 setInstituicoes(data.data);
+                console.log(data.data)
                 limparCampos();
             })
             .catch(err => console.error(err));
@@ -116,7 +117,7 @@ const CrudCurso = () => {
                                 <Form.Label>Título</Form.Label>
                                 <Form.Control type="text" value={titulo} onChange={event => setTitulo(event.target.value)} placeholder="Insira o título" />
                             </Form.Group>
-                            <Form.Group controlId="formBasicPerfil">
+                            <Form.Group controlId="formBasicInstituicao">
                                 <Form.Label>Instituição</Form.Label>
                                 <Form.Control as="select" size="sg" custom defaultValue={idInstituicao} onChange={event => setIdInstituicao(parseInt(event.target.value))}>
                                     <option value="">Selecione uma instituição...</option>
