@@ -18,14 +18,14 @@ const CrudCurso = () => {
     }, []);
 
     const listarInsitiuicao = () => {
-            fetch(url + 'instituicao')
-                .then(response => response.json())
-                .then(data => {
-                    setInstituicoes(data.data);
-                    limparCampos();
-                })
-                .catch(err => console.error(err));
-        }
+        fetch(url + 'instituicao')
+            .then(response => response.json())
+            .then(data => {
+                setInstituicoes(data.data);
+                limparCampos();
+            })
+            .catch(err => console.error(err));
+    }
 
     const listarCursos = () => {
         fetch(url + 'curso')
@@ -73,7 +73,7 @@ const CrudCurso = () => {
 
         const curso = {
             titulo: titulo,
-            idInstituicao : idInstituicao
+            idInstituicao: idInstituicao,
         }
 
         let method = (idCurso === 0 ? 'POST' : 'PUT')
@@ -93,6 +93,7 @@ const CrudCurso = () => {
                 listarCursos();
             })
     }
+
 
     const limparCampos = () => {
         setIdCurso(0);
@@ -117,7 +118,8 @@ const CrudCurso = () => {
                             </Form.Group>
                             <Form.Group controlId="formBasicPerfil">
                                 <Form.Label>Instituição</Form.Label>
-                                <Form.Control as="select" size="sg" custom defaultValue={idInstituicao} onChange={event => setIdInstituicao(event.target.value)}>
+                                <Form.Control as="select" size="sg" custom defaultValue={idInstituicao} onChange={event => setIdInstituicao(parseInt(event.target.value))}>
+                                    <option value="">Selecione uma instituição...</option>
                                     {
                                         instituicoes.map((item, index) => {
                                             return (
