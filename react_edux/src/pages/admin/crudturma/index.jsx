@@ -102,9 +102,9 @@ const CrudTurma = () => {
                                 <Form.Label>Cursos</Form.Label>
                                 <Form.Control as="select">
                                     {
-                                        objetivos.map((item, index) => {
+                                        cursos.map((item, index) => {
                                             return (
-                                                <option value={item.idObjetivos}>{item.nome}</option>
+                                                <option value={item.idCursos}>{item.nome}</option>
                                             )
                                         })
                                     }
