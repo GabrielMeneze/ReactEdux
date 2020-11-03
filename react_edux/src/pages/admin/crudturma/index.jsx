@@ -6,7 +6,7 @@ import Rodape from '../../../components/rodape'
 import Titulo from '../../../components/titulo'
 
 const CrudTurma = () => {
-    const [idCurso, setIdCurso] = useState(0);
+    const [idTurma, setIdTurma] = useState(0);
     const [periodo, setPeriodo] = useState('');
     const [cursos, setCursos] = useState([]);
     const [instituicoes, setInstituicoes] = useState([]);
@@ -17,7 +17,7 @@ const CrudTurma = () => {
     }, []);
 
     const listarCursos = () => {
-        fetch(url + 'curso')
+        fetch(url + 'turma')
             .then(response => response.json())
             .then(data => {
                 setCursos(data.data);
@@ -43,7 +43,7 @@ const CrudTurma = () => {
             .then(response => response.json())
             .then(dado => {
                 console.log(dado)
-                setIdCurso(dado.idCurso)
+                setIdTurma(dado.IdTurma)
                 setPeriodo(dado.periodo)
             })
     }
@@ -73,8 +73,8 @@ const CrudTurma = () => {
             periodo: periodo
         }
 
-        let method = (idCurso === 0 ? 'POST' : 'PUT')
-        let urlRequest = (idCurso === 0 ? `${url}curso` : `${url}curso/${idCurso}`)
+        let method = (IdTurma === 0 ? 'POST' : 'PUT')
+        let urlRequest = (IdTurma === 0 ? `${url}turma` : `${url}turma/${IdTurma}`)
 
         fetch(urlRequest, {
             method: method,
@@ -92,7 +92,7 @@ const CrudTurma = () => {
     }
 
     const limparCampos = () => {
-        setIdCurso(0);
+        setIdTurma(0);
         setPeriodo('');
     }
 
@@ -143,8 +143,8 @@ const CrudTurma = () => {
                                         <td>{item.periodo}</td>
                                         <td>{item.nome}</td>
                                         <td style={{ display: 'flex' }}>
-                                            <Button variant="info" value={item.idCurso} onClick={event => editar(event)} >Editar</Button>
-                                            <Button variant="danger" value={item.idCurso} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
+                                            <Button variant="info" value={item.IdTurma} onClick={event => editar(event)} >Editar</Button>
+                                            <Button variant="danger" value={item.IdTurma} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
                                         </td>
                                     </tr>
                                 )
