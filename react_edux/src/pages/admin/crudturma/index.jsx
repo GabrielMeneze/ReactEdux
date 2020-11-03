@@ -9,11 +9,12 @@ const CrudTurma = () => {
     const [idTurma, setIdTurma] = useState(0);
     const [periodo, setPeriodo] = useState('');
     const [cursos, setCursos] = useState([]);
-    const [instituicoes, setInstituicoes] = useState([]);
+    const [objetivos, setObjetivos] = useState([]);
+    const [descricao, setDescricao] = useState([]);
+
 
     useEffect(() => {
         listarCursos()
-        listarInsitiuicao()
     }, []);
 
     const listarCursos = () => {
@@ -21,16 +22,6 @@ const CrudTurma = () => {
             .then(response => response.json())
             .then(data => {
                 setCursos(data.data);
-                limparCampos();
-            })
-            .catch(err => console.error(err));
-    }
-
-    const listarInsitiuicao = () => {
-        fetch(url + 'instituicao')
-            .then(response => response.json())
-            .then(data => {
-                setInstituicoes(data.data);
                 limparCampos();
             })
             .catch(err => console.error(err));
@@ -53,7 +44,7 @@ const CrudTurma = () => {
 
         console.log(event.target.value)
 
-        fetch(url + 'curso/' + event.target.value, {
+        fetch(url + 'turma/' + event.target.value, {
             method: 'DELETE',
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token-edux')
@@ -73,8 +64,8 @@ const CrudTurma = () => {
             periodo: periodo
         }
 
-        let method = (IdTurma === 0 ? 'POST' : 'PUT')
-        let urlRequest = (IdTurma === 0 ? `${url}turma` : `${url}turma/${IdTurma}`)
+        let method = (idTurma === 0 ? 'POST' : 'PUT')
+        let urlRequest = (idTurma === 0 ? `${url}turma` : `${url}turma/${idTurma}`)
 
         fetch(urlRequest, {
             method: method,
@@ -111,9 +102,9 @@ const CrudTurma = () => {
                                 <Form.Label>Cursos</Form.Label>
                                 <Form.Control as="select">
                                     {
-                                        instituicoes.map((item, index) => {
+                                        objetivos.map((item, index) => {
                                             return (
-                                                <option value={item.idInstituicao}>{item.nome}</option>
+                                                <option value={item.idObjetivos}>{item.nome}</option>
                                             )
                                         })
                                     }
@@ -123,6 +114,10 @@ const CrudTurma = () => {
                                 <Form.Label>Período</Form.Label>
                                 <Form.Control type="text" value={periodo} onChange={event => setPeriodo(event.target.value)} placeholder="Insira o período" />
                             </Form.Group>
+                            <Form.Group controlId="formBasicTitulo">
+                                <Form.Label>Descrição</Form.Label>
+                                <Form.Control type="text" value={descricao} onChange={event => setDescricao(event.target.value)} placeholder="Insira a descrição da turma." />
+                            </Form.Group>
                             <Button type="submit" style={{ background: '#00d65f', borderColor: '#00d65f' }}>Salvar</Button>
                         </Form>
                     </Card.Body>
@@ -130,8 +125,9 @@ const CrudTurma = () => {
                 <Table style={{ background: '#FFFFFF', borderRadius: '10px', marginTop: '2em' }} striped hover>
                     <thead>
                         <tr>
-                            <th>Periodo</th>
                             <th>Curso</th>
+                            <th>Periodo</th>
+                            <th>Descrição</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
