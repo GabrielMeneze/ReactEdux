@@ -113,9 +113,9 @@ const CrudInsituicao = () => {
     }
 
     return (
-        <div style={{background : '#2a2a2a'}}>
+        <div style={{ background: '#2a2a2a' }}>
             <Menu />
-            <Container style={{marginTop: '3em'}}>
+            <Container style={{ marginTop: '3em' }}>
                 <Titulo
                     titulo="Instituições"
                     chamada="Gerencie as instituições"
@@ -141,11 +141,11 @@ const CrudInsituicao = () => {
                                 <Form.Label>CEP</Form.Label>
                                 <Form.Control type="text" value={cep} onChange={event => setCep(event.target.value)} placeholder="Insira o CEP" />
                             </Form.Group>
-                            <Button type="submit" style={{background : '#00d65f', borderColor: '#00d65f'}}>Salvar</Button>
+                            <Button type="submit" style={{ background: '#00d65f', borderColor: '#00d65f' }}>Salvar</Button>
                         </Form>
                     </Card.Body>
                 </Card>
-                <Table style={{background : '#FFFFFF', borderRadius : '10px', marginTop: '2em'}} striped hover>
+                <Table style={{ background: '#FFFFFF', borderRadius: '10px', marginTop: '2em' }} striped hover>
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -172,9 +172,9 @@ const CrudInsituicao = () => {
                                         <td>{item.cidade}</td>
                                         <td>{item.uf}</td>
                                         <td>{item.cep}</td>
-                                        <td style={{display : 'flex'}}>
+                                        <td style={{ display: 'flex' }}>
                                             <Button variant="info" value={item.idInstituicao} onClick={event => editar(event)} >Editar</Button>
-                                            <Button variant="danger" value={item.idInstituicao} onClick={event => excluir(event)} style={{marginLeft : '10px'}}>Excluir</Button>
+                                            <Button variant="danger" value={item.idInstituicao} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
                                         </td>
                                     </tr>
                                 )
