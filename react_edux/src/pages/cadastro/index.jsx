@@ -101,6 +101,7 @@ const Cadastro = () => {
                             borderBottomRightRadius: '0',
                             borderBottomLeftRadius: '0'
                         }}>
+                            <option value="">Selecione um tipo de usuário...</option>
                             {
                                 perfis.map((item, index) => {
                                     return (
@@ -116,7 +117,7 @@ const Cadastro = () => {
                         Enviar
                         </Button>
                     <br /><br />
-                    <a href="/login" style={{ marginTop: '30px' }}>Já tenho conta!</a>
+                    <a href="/login" style={{ marginTop: '30px', color: '#00C2EE' }}>Já tenho conta!</a>
                 </Form>
             </Container>
             <Rodape />

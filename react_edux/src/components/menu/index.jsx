@@ -58,8 +58,9 @@ const Menu = () => {
             return (
                 <Nav>
                     <Nav.Link href="/curso" alt="Página inicial" style={{ color: '#00C2EE' }}><strong>Cursos</strong></Nav.Link>
+                    <Nav.Link href="/turma" alt="Página inicial" style={{ color: '#00D65F' }}><strong>Turmas</strong></Nav.Link>
                     <Dropdown>
-                        <Dropdown.Toggle style={{ color: '#00D65F' }} variant="dark" id="dropdown-basic">
+                        <Dropdown.Toggle style={{ color: '#F9E800' }} variant="dark" id="dropdown-basic">
                             <strong>{jwt_decode(token).nameid}</strong>
                         </Dropdown.Toggle>
 

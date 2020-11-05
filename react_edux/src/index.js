@@ -47,7 +47,6 @@ const routing = (
       <RotaPrivada path="/turma" component={Turma} />
       <RotaPrivadaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />
       <RotaPrivadaAdmin path ="/admin/crudcurso" component={CrudCurso} />
-      <RotaPrivadaAdmin path ="/admin/crudturma" component={CrudTurma} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>
   </Router>
