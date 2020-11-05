@@ -13,7 +13,7 @@ import Turma from './pages/turma';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
 import CrudCurso from './pages/admin/crudcurso';
-import CrudTurma from './pages/admin/crudturma';
+import Cadastro from './pages/cadastro';
 
 const RotaPrivada = ({ component: Component, ...rest }) => (
   <Route
@@ -42,6 +42,7 @@ const routing = (
     <Switch>
       <Route exact path ="/" component={Home} />
       <Route path="/login" component={Login} />
+      <Route path="/cadastro" component={Cadastro} />
       <Route path="/curso" component={Curso} />
       <RotaPrivada path="/turma" component={Turma} />
       <RotaPrivadaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />

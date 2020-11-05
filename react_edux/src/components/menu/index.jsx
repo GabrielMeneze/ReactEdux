@@ -23,7 +23,7 @@ const Menu = () => {
                 <Nav>
                     <Nav.Link href="/" alt="Página inicial" style={{ color: '#00C2EE' }}><strong>Home</strong></Nav.Link>
                     <Nav.Link href="/login" alt="Página de login" style={{ color: '#00D65F' }}><strong>Login</strong></Nav.Link>
-                    <Nav.Link href="/cadastrar" alt="Página de cadastro de usuário" style={{ color: '#F9E800' }}><strong>Cadastro</strong></Nav.Link>
+                    <Nav.Link href="/cadastro" alt="Página de cadastro de usuário" style={{ color: '#F9E800' }}><strong>Cadastro</strong></Nav.Link>
                 </Nav>
             );
         } else if (jwt_decode(token).Role === "1") {
