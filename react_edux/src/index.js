@@ -12,6 +12,7 @@ import Curso from './pages/curso';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
 import CrudCurso from './pages/admin/crudcurso';
+import Cadastro from './pages/cadastro';
 
 const RotaPrivada = ({ component: Component, ...rest }) => (
   <Route
@@ -40,6 +41,7 @@ const routing = (
     <Switch>
       <Route exact path ="/" component={Home} />
       <Route path="/login" component={Login} />
+      <Route path="/cadastro" component={Cadastro} />
       <Route path="/curso" component={Curso} />
       <RotaPrivadaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />
       <RotaPrivadaAdmin path ="/admin/crudcurso" component={CrudCurso} />
