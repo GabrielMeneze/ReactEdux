@@ -20,7 +20,7 @@ const Home = () => {
                 <h1 style={{ marginBottom: '1em', color: 'white' }}>A melhor escola técnica do <strong>Brasil</strong>!!!</h1>
                 <p>
                     <Button variant="warning" href="/login" >Login</Button>
-                    <Button variant="success" href="/cadastrar" style={{ marginLeft: '30px' }}>Cadastrar</Button>
+                    <Button variant="success" href="/cadastro" style={{ marginLeft: '30px' }}>Cadastrar</Button>
                 </p>
             </Jumbotron>
             <Container>

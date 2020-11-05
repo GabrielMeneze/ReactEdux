@@ -8,20 +8,20 @@ import Titulo from '../../../components/titulo'
 const CrudTurma = () => {
     const [idTurma, setIdTurma] = useState(0);
     const [periodo, setPeriodo] = useState('');
-    const [cursos, setCursos] = useState([]);
+    const [descricao, setDescricao] = useState('');
+    const [turmas, setTurmas] = useState([]);
     const [objetivos, setObjetivos] = useState([]);
-    const [descricao, setDescricao] = useState([]);
 
 
     useEffect(() => {
-        listarCursos()
+        listarTurmas()
     }, []);
 
-    const listarCursos = () => {
+    const listarTurmas = () => {
         fetch(url + 'turma')
             .then(response => response.json())
             .then(data => {
-                setCursos(data.data);
+                setTurmas(data.data);
                 limparCampos();
             })
             .catch(err => console.error(err));
@@ -30,12 +30,14 @@ const CrudTurma = () => {
     const editar = (event) => {
         event.preventDefault();
 
-        fetch(`${url}curso/${event.target.value}`)
+        fetch(`${url}turma/${event.target.value}`)
             .then(response => response.json())
             .then(dado => {
                 console.log(dado)
                 setIdTurma(dado.IdTurma)
                 setPeriodo(dado.periodo)
+                setObjetivos(dado.objetivos)
+                setDescricao(dado.descricao)
             })
     }
 
@@ -53,15 +55,17 @@ const CrudTurma = () => {
             .then(response => response.json())
             .then(dados => {
                 alert('Turma removida.')
-                listarCursos()
+                listarTurmas()
             })
     }
 
     const salvar = (event) => {
         event.preventDefault();
 
-        const curso = {
-            periodo: periodo
+        const Turmas = {
+            periodo: periodo,
+            descricao: descricao,
+            objetivos: objetivos
         }
 
         let method = (idTurma === 0 ? 'POST' : 'PUT')
@@ -78,13 +82,16 @@ const CrudTurma = () => {
             .then(response => response.json())
             .then(dados => {
                 alert('Turma adicionada.');
-                listarCursos();
+                listarTurmas();
             })
     }
 
     const limparCampos = () => {
         setIdTurma(0);
         setPeriodo('');
+        setCurso('');
+        setObjetivos('');
+        setDescricao('');
     }
 
     return (
@@ -104,7 +111,7 @@ const CrudTurma = () => {
                                     {
                                         cursos.map((item, index) => {
                                             return (
-                                                <option value={item.idCursos}>{item.nome}</option>
+                                                <option value={item.idCurso}>{item.nome}</option>
                                             )
                                         })
                                     }
@@ -133,7 +140,7 @@ const CrudTurma = () => {
                     </thead>
                     <tbody>
                         {
-                            cursos.map((item, index) => {
+                            turmas.map((item, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{item.periodo}</td>
