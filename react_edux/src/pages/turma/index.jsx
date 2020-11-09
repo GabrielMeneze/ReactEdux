@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from '../../components/menu';
 import Rodape from '../../components/rodape';
 import logoColorida from '../../assets/img/logoColorida.png';
 import { Form, Container, Button } from 'react-bootstrap';
 import './index.css';
+import { url } from '../../utils/constants';
 
 const Turma = () => {
     return (
@@ -21,7 +22,7 @@ const Turma = () => {
                             <hr/>
                             <p>
                             <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Descrição</Button>
-                            <Button href="/" style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }}>Objetivos</Button>
+                            <Button href="#" trigger="click" data-toggle="popover"  style={{ marginBottom: '15px', marginLeft: '15px', marginRight: '15px', color: '#FFFFFF' }} title="O aluno deverá ser capaz de desenvolver em diversas linguagens">Objetivos</Button>
                             </p>
                         </div>
                     </div>
@@ -32,4 +33,7 @@ const Turma = () => {
     )
 }
 
+
+
 export default Turma;
+
