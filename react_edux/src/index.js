@@ -8,10 +8,12 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import Home from './pages/home';
 import Login from './pages/login';
+import Turma from './pages/turma';
 import Curso from './pages/curso';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
 import CrudCurso from './pages/admin/crudcurso';
+import CrudTurma from './pages/admin/crudturma';
 import Cadastro from './pages/cadastro';
 
 const RotaPrivada = ({ component: Component, ...rest }) => (
@@ -55,6 +57,7 @@ const routing = (
       <Route path="/curso" component={Curso} />
       <RotaPrivada path="/turma" component={Turma} />
       <RotaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />
+      <RotaAdmin path ="/admin/crudturma" component={CrudTurma} />
       <RotaAdmin path ="/admin/crudcurso" component={CrudCurso} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>

@@ -17,7 +17,6 @@ const Cadastro = () => {
   const [perfis, setPerfis] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
 
-
   const history = useHistory();
 
   const listarUsuarios = () => {
@@ -108,13 +107,15 @@ const Cadastro = () => {
 
     event.preventDefault();
 
+    const perfilUsuario = (localStorage.getItem('token-edux') === null ? null : jwt_decode(localStorage.getItem('token-edux')))
+
     fetch(url + "usuario", {
       method: "POST",
       body: JSON.stringify({
         nome: nome,
         email: email,
         senha: senha,
-        idPerfil: 2,
+        idPerfil: perfilUsuario === '1' ? idPerfil : 2
       }),
       headers: {
         "content-type": "application/json",

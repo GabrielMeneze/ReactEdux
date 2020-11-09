@@ -5,7 +5,7 @@ import Rodape from '../../components/rodape';
 
 const Home = () => {
     return (
-        <div>
+        <div style={{ background: 'white' }}>
             <Menu />
             <Carousel>
                 <Carousel.Item>

@@ -11,10 +11,14 @@ const CrudTurma = () => {
     const [descricao, setDescricao] = useState('');
     const [turmas, setTurmas] = useState([]);
     const [objetivos, setObjetivos] = useState([]);
+    const [idCurso, setIdCurso] = useState(0)
+    const [curso, setCurso] = useState('');
+    const [cursos, setCursos] = useState([]);
 
 
     useEffect(() => {
         listarTurmas()
+        listarCursos()
     }, []);
 
     const listarTurmas = () => {
@@ -22,6 +26,16 @@ const CrudTurma = () => {
             .then(response => response.json())
             .then(data => {
                 setTurmas(data.data);
+                limparCampos();
+            })
+            .catch(err => console.error(err));
+    }
+
+    const listarCursos = () => {
+        fetch(url + 'curso')
+            .then(response => response.json())
+            .then(data => {
+                setCursos(data.data);
                 limparCampos();
             })
             .catch(err => console.error(err));
@@ -62,10 +76,9 @@ const CrudTurma = () => {
     const salvar = (event) => {
         event.preventDefault();
 
-        const Turmas = {
-            periodo: periodo,
+        const turma = {
             descricao: descricao,
-            objetivos: objetivos
+            idCurso : idCurso
         }
 
         let method = (idTurma === 0 ? 'POST' : 'PUT')
@@ -73,7 +86,7 @@ const CrudTurma = () => {
 
         fetch(urlRequest, {
             method: method,
-            body: JSON.stringify(curso),
+            body: JSON.stringify(turma),
             headers: {
                 'content-type': 'application/json',
                 'authorization': 'Bearer ' + localStorage.getItem('token-edux')
@@ -107,23 +120,20 @@ const CrudTurma = () => {
                         <Form onSubmit={event => salvar(event)}>
                             <Form.Group controlId="formBasicPerfil">
                                 <Form.Label>Cursos</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control as="select" size="sg" custom defaultValue={idTurma} onChange={event => setIdCurso(parseInt(event.target.value))}>
+                                    <option value="">Selecione uma instituição...</option>
                                     {
                                         cursos.map((item, index) => {
                                             return (
-                                                <option value={item.idCurso}>{item.nome}</option>
+                                                <option key={index} value={item.idCurso}>{item.titulo}</option>
                                             )
                                         })
                                     }
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="formBasicTitulo">
-                                <Form.Label>Período</Form.Label>
-                                <Form.Control type="text" value={periodo} onChange={event => setPeriodo(event.target.value)} placeholder="Insira o período" />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicTitulo">
                                 <Form.Label>Descrição</Form.Label>
-                                <Form.Control type="text" value={descricao} onChange={event => setDescricao(event.target.value)} placeholder="Insira a descrição da turma." />
+                                <Form.Control type="text" value={descricao} onChange={event => setDescricao(event.target.value)} placeholder="Insira a descrição da turma" />
                             </Form.Group>
                             <Button type="submit" style={{ background: '#00d65f', borderColor: '#00d65f' }}>Salvar</Button>
                         </Form>
@@ -133,7 +143,6 @@ const CrudTurma = () => {
                     <thead>
                         <tr>
                             <th>Curso</th>
-                            <th>Periodo</th>
                             <th>Descrição</th>
                             <th>Ações</th>
                         </tr>
@@ -143,7 +152,7 @@ const CrudTurma = () => {
                             turmas.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{item.periodo}</td>
+                                        <td>{item.idCurso}</td>
                                         <td>{item.nome}</td>
                                         <td style={{ display: 'flex' }}>
                                             <Button variant="info" value={item.IdTurma} onClick={event => editar(event)} >Editar</Button>

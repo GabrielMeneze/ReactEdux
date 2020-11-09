@@ -38,7 +38,7 @@ const Curso = () => {
                 {
                     instituicoes.map((item, index) => {
                         return (
-                            <p>
+                            <p key={index}>
                                 Rua: {item.logradouro}<br />
                                 Bairro: {item.bairro}<br />
                                 Numero: {item.numero}
@@ -67,14 +67,7 @@ const Curso = () => {
                                 <Card style={{ width: '20rem', margin: '1em' }}>
                                     <Card.Body>
                                         <Card.Title value={item.titulo}>{item.titulo}</Card.Title>
-                                        <Card.Text>{
-                                            instituicoes.map((item, index) => {
-                                                return (
-                                                    <p>{item.nome}</p>
-                                                )
-                                            })
-                                        }
-                                        </Card.Text>
+                                        <Card.Text>{ item.idInstituicaoNavigation.nome}</Card.Text>
                                         <PopoverInformatica />
                                     </Card.Body>
                                 </Card>

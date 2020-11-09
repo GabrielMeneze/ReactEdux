@@ -41,6 +41,7 @@ const Menu = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             <Dropdown.Item href="/admin/crudcurso">Cursos</Dropdown.Item>
+                            <Dropdown.Item href="/admin/crudturma">Turmas</Dropdown.Item>
                             <Dropdown.Item href="/admin/crudinstituicao">Instituições</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
