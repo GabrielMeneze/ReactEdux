@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Home from './pages/home';
 import Login from './pages/login';
 import Curso from './pages/curso';
-import Turma from './pages/turma';
 import CrudInsituicao from './pages/admin/crudinstituicao';
 import NaoEncontrada from './pages/naoencontrada'
 import CrudCurso from './pages/admin/crudcurso';
@@ -26,11 +25,21 @@ const RotaPrivada = ({ component: Component, ...rest }) => (
   />
 );
 
-const RotaPrivadaAdmin = ({ component: Component, ...rest }) => (
+const RotaAdmin = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       localStorage.getItem('token-edux') !== null && jwt_decode(localStorage.getItem('token-edux')).Role === "1" ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/acessonegado', state: { from: props.location } }} />)
+    }
+  />
+);
+const RotaProfessor = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem('token-edux') !== null && jwt_decode(localStorage.getItem('token-edux')).Role === "3" ?
         (<Component {...props} />) :
         (<Redirect to={{ pathname: '/login', state: { from: props.location } }} />)
     }
@@ -45,8 +54,8 @@ const routing = (
       <Route path="/cadastro" component={Cadastro} />
       <Route path="/curso" component={Curso} />
       <RotaPrivada path="/turma" component={Turma} />
-      <RotaPrivadaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />
-      <RotaPrivadaAdmin path ="/admin/crudcurso" component={CrudCurso} />
+      <RotaAdmin path ="/admin/crudinstituicao" component={CrudInsituicao} />
+      <RotaAdmin path ="/admin/crudcurso" component={CrudCurso} />
       <Route path ="/naoencontrada" component={NaoEncontrada} />
     </Switch>
   </Router>
