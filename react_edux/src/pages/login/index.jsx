@@ -85,7 +85,7 @@ const Login = () => {
                     </Button>
 
                     <br /><br />
-                    <a href="/cadastrar" style={{ marginTop: '30px', color: '#00C2EE' }}>Não tenho conta!</a>
+                    <a href="/cadastro" style={{ marginTop: '30px', color: '#00C2EE' }}>Não tenho conta!</a>
 
                 </Form>
             </Container>

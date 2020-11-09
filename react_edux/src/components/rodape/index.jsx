@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import './index'
 
 const Rodape = () => {
@@ -8,7 +7,7 @@ const Rodape = () => {
             <div>
                 <p>Todos os Direitos Reservados - SENAI SP.</p>
             </div>
-            <small>Desenvolvido por <strong>The Boys</strong></small>
+            <small>Desenvolvido por <strong>The boys</strong></small>
         </footer>
     );
 }

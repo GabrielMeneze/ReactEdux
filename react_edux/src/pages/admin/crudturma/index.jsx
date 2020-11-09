@@ -5,24 +5,27 @@ import Menu from '../../../components/menu'
 import Rodape from '../../../components/rodape'
 import Titulo from '../../../components/titulo'
 
-const CrudCurso = () => {
-    const [idCurso, setIdCurso] = useState(0);
-    const [idInstituicao, setIdInstituicao] = useState(0);
-    const [titulo, setTitulo] = useState('');
+const CrudTurma = () => {
+    const [idTurma, setIdTurma] = useState(0);
+    const [periodo, setPeriodo] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [turmas, setTurmas] = useState([]);
+    const [objetivos, setObjetivos] = useState([]);
+    const [idCurso, setIdCurso] = useState(0)
+    const [curso, setCurso] = useState('');
     const [cursos, setCursos] = useState([]);
-    const [instituicoes, setInstituicoes] = useState([]);
+
 
     useEffect(() => {
+        listarTurmas()
         listarCursos()
-        listarInstitiuicao()
     }, []);
 
-    const listarInstitiuicao = () => {
-        fetch(url + 'instituicao')
+    const listarTurmas = () => {
+        fetch(url + 'turma')
             .then(response => response.json())
             .then(data => {
-                setInstituicoes(data.data);
-                console.log(data.data)
+                setTurmas(data.data);
                 limparCampos();
             })
             .catch(err => console.error(err));
@@ -41,13 +44,14 @@ const CrudCurso = () => {
     const editar = (event) => {
         event.preventDefault();
 
-        fetch(`${url}curso/${event.target.value}`)
+        fetch(`${url}turma/${event.target.value}`)
             .then(response => response.json())
             .then(dado => {
                 console.log(dado)
-                setIdCurso(dado.idCurso)
-                setIdInstituicao(dado.idInstituicao)
-                setTitulo(dado.titulo)
+                setIdTurma(dado.IdTurma)
+                setPeriodo(dado.periodo)
+                setObjetivos(dado.objetivos)
+                setDescricao(dado.descricao)
             })
     }
 
@@ -56,7 +60,7 @@ const CrudCurso = () => {
 
         console.log(event.target.value)
 
-        fetch(url + 'curso/' + event.target.value, {
+        fetch(url + 'turma/' + event.target.value, {
             method: 'DELETE',
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('token-edux')
@@ -64,25 +68,25 @@ const CrudCurso = () => {
         })
             .then(response => response.json())
             .then(dados => {
-                alert('Curso removido!')
-                listarCursos()
+                alert('Turma removida.')
+                listarTurmas()
             })
     }
 
     const salvar = (event) => {
         event.preventDefault();
 
-        const curso = {
-            titulo: titulo,
-            idInstituicao: idInstituicao,
+        const turma = {
+            descricao: descricao,
+            idCurso : idCurso
         }
 
-        let method = (idCurso === 0 ? 'POST' : 'PUT')
-        let urlRequest = (idCurso === 0 ? `${url}curso` : `${url}curso/${idCurso}`)
+        let method = (idTurma === 0 ? 'POST' : 'PUT')
+        let urlRequest = (idTurma === 0 ? `${url}turma` : `${url}turma/${idTurma}`)
 
         fetch(urlRequest, {
             method: method,
-            body: JSON.stringify(curso),
+            body: JSON.stringify(turma),
             headers: {
                 'content-type': 'application/json',
                 'authorization': 'Bearer ' + localStorage.getItem('token-edux')
@@ -90,16 +94,17 @@ const CrudCurso = () => {
         })
             .then(response => response.json())
             .then(dados => {
-                alert('Curso salvo!');
-                listarCursos();
+                alert('Turma adicionada.');
+                listarTurmas();
             })
     }
 
-
     const limparCampos = () => {
-        setIdCurso(0);
-        setIdInstituicao(0);
-        setTitulo('');
+        setIdTurma(0);
+        setPeriodo('');
+        setCurso('');
+        setObjetivos('');
+        setDescricao('');
     }
 
     return (
@@ -107,28 +112,28 @@ const CrudCurso = () => {
             <Menu />
             <Container style={{ marginTop: '3em' }}>
                 <Titulo
-                    titulo="Cursos"
-                    chamada="Gerencie os cursos"
+                    titulo="Turmas"
+                    chamada="Gerencie as turmas."
                 />
                 <Card >
                     <Card.Body>
                         <Form onSubmit={event => salvar(event)}>
-                            <Form.Group controlId="formBasicTitulo">
-                                <Form.Label>Título</Form.Label>
-                                <Form.Control type="text" value={titulo} onChange={event => setTitulo(event.target.value)} placeholder="Insira o título" />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicInstituicao">
-                                <Form.Label>Instituição</Form.Label>
-                                <Form.Control as="select" size="sg" custom defaultValue={idInstituicao} onChange={event => setIdInstituicao(parseInt(event.target.value))}>
-                                    <option value={0}>Selecione uma instituição...</option>
+                            <Form.Group controlId="formBasicPerfil">
+                                <Form.Label>Cursos</Form.Label>
+                                <Form.Control as="select" size="sg" custom defaultValue={idTurma} onChange={event => setIdCurso(parseInt(event.target.value))}>
+                                    <option value="">Selecione uma instituição...</option>
                                     {
-                                        instituicoes.map((item, index) => {
+                                        cursos.map((item, index) => {
                                             return (
-                                                <option key={index} value={item.idInstituicao}>{item.nome}</option>
+                                                <option key={index} value={item.idCurso}>{item.titulo}</option>
                                             )
                                         })
                                     }
                                 </Form.Control>
+                            </Form.Group>
+                            <Form.Group controlId="formBasicTitulo">
+                                <Form.Label>Descrição</Form.Label>
+                                <Form.Control type="text" value={descricao} onChange={event => setDescricao(event.target.value)} placeholder="Insira a descrição da turma" />
                             </Form.Group>
                             <Button type="submit" style={{ background: '#00d65f', borderColor: '#00d65f' }}>Salvar</Button>
                         </Form>
@@ -138,22 +143,22 @@ const CrudCurso = () => {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Titulo</th>
-                            <th>Instituição</th>
+                            <th>Curso</th>
+                            <th>Descrição</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            cursos.map((item, index) => {
+                            turmas.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{item.idCurso}</td>
-                                        <td>{item.titulo}</td>
-                                        <td>{item.idInstituicaoNavigation.nome}</td>
+                                        <td>{item.idTurma}</td>
+                                        <td>{item.idCursoNavigation.titulo}</td>
+                                        <td>{item.nome}</td>
                                         <td style={{ display: 'flex' }}>
-                                            <Button variant="info" value={item.idCurso} onClick={event => editar(event)} >Editar</Button>
-                                            <Button variant="danger" value={item.idCurso} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
+                                            <Button variant="info" value={item.IdTurma} onClick={event => editar(event)} >Editar</Button>
+                                            <Button variant="danger" value={item.IdTurma} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
                                         </td>
                                     </tr>
                                 )
@@ -168,4 +173,4 @@ const CrudCurso = () => {
     )
 }
 
-export default CrudCurso;
+export default CrudTurma;

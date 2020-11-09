@@ -23,31 +23,34 @@ const Menu = () => {
                 <Nav>
                     <Nav.Link href="/" alt="Página inicial" style={{ color: '#00C2EE' }}><strong>Home</strong></Nav.Link>
                     <Nav.Link href="/login" alt="Página de login" style={{ color: '#00D65F' }}><strong>Login</strong></Nav.Link>
-                    <Nav.Link href="/cadastrar" alt="Página de cadastro de usuário" style={{ color: '#F9E800' }}><strong>Cadastro</strong></Nav.Link>
+                    <Nav.Link href="/cadastro" alt="Página de cadastro de usuário" style={{ color: '#F9E800' }}><strong>Cadastro</strong></Nav.Link>
                 </Nav>
             );
         } else if (jwt_decode(token).Role === "1") {
             // Role = 1 (Administrador)
             // Role = 2 (Padrão)
+            // Role = 3 (Professor)
             return (
                 <Nav>
+                     <Nav.Link href="/curso" alt="Página inicial" style={{ color: '#00C2EE' }}><strong>Cursos</strong></Nav.Link>
+                    <Nav.Link href="/turma" alt="Página inicial" style={{ color: '#00D65F' }}><strong>Turmas</strong></Nav.Link>
+                    <Nav.Link href="/cadastro" alt="Página de cadastro de usuário" style={{ color: '#FF271C ' }}><strong>Adicionar usuário</strong></Nav.Link>
                     <Dropdown>
-                        <Dropdown.Toggle style={{ color: '#00C2EE' }} variant="dark" id="dropdown-basic">
+                        <Dropdown.Toggle style={{ color: '#F9E800' }} variant="dark" id="dropdown-basic">
                             <strong>Dashboard</strong>
                         </Dropdown.Toggle>
-
                         <Dropdown.Menu>
+                            <Dropdown.Item href="/admin/crudcurso">Cursos</Dropdown.Item>
+                            <Dropdown.Item href="/admin/crudturma">Turmas</Dropdown.Item>
                             <Dropdown.Item href="/admin/crudinstituicao">Instituições</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
-                        <Dropdown.Toggle style={{ color: '#00D65F' }} variant="dark" id="dropdown-basic">
+                        <Dropdown.Toggle style={{ color: '#00C2EE' }} variant="dark" id="dropdown-basic">
                             <strong>{jwt_decode(token).nameid}</strong>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
-                            <Dropdown.Divider />
                             <Dropdown.Item onClick={event => sair(event)} >Sair</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -56,14 +59,14 @@ const Menu = () => {
         } else {
             return (
                 <Nav>
+                    <Nav.Link href="/curso" alt="Página inicial" style={{ color: '#00C2EE' }}><strong>Cursos</strong></Nav.Link>
+                    <Nav.Link href="/turma" alt="Página inicial" style={{ color: '#00D65F' }}><strong>Turmas</strong></Nav.Link>
                     <Dropdown>
-                        <Dropdown.Toggle style={{ color: '#00D65F' }} variant="dark" id="dropdown-basic">
+                        <Dropdown.Toggle style={{ color: '#F9E800' }} variant="dark" id="dropdown-basic">
                             <strong>{jwt_decode(token).nameid}</strong>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="/perfil">Perfil</Dropdown.Item>
-                            <Dropdown.Divider />
                             <Dropdown.Item onClick={event => sair(event)} >Sair</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -80,7 +83,6 @@ const Menu = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Navbar.Collapse id="basic-navbar-nav">
                     </Navbar.Collapse>
-
                     {renderMenu()}
                 </Navbar.Collapse>
             </Navbar>

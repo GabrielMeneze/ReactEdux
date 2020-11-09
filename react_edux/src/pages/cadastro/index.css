@@ -36,6 +36,14 @@ html,
     z-index: 2;
 }
 
+.form-signin input[type="text"] {
+    background-color: #2a2a2a;
+    color: white;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .form-signin input[type="email"] {
     background-color: #2a2a2a;
     color: white;

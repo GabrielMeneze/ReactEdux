@@ -5,7 +5,7 @@ import Rodape from '../../components/rodape';
 
 const Home = () => {
     return (
-        <div>
+        <div style={{ background: 'white' }}>
             <Menu />
             <Carousel>
                 <Carousel.Item>
@@ -20,7 +20,7 @@ const Home = () => {
                 <h1 style={{ marginBottom: '1em', color: 'white' }}>A melhor escola técnica do <strong>Brasil</strong>!!!</h1>
                 <p>
                     <Button variant="warning" href="/login" >Login</Button>
-                    <Button variant="success" href="/cadastrar" style={{ marginLeft: '30px' }}>Cadastrar</Button>
+                    <Button variant="success" href="/cadastro" style={{ marginLeft: '30px' }}>Cadastrar</Button>
                 </p>
             </Jumbotron>
             <Container>
@@ -45,7 +45,7 @@ const Home = () => {
                                 <Card.Text>
                                     Cursos de ensino técnico das instituições.
                                 </Card.Text>
-                                <Button variant="danger">Ir para página de cursos</Button>
+                                <Button variant="danger" href="/curso">Ir para página de cursos</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -53,11 +53,11 @@ const Home = () => {
                         <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src="https://fluxoconsultoria.poli.ufrj.br/wp-content/uploads/2015/05/thinkstockphotos-896358708.jpg" />
                             <Card.Body>
-                                <Card.Title>Objetivos</Card.Title>
+                                <Card.Title>Turmas</Card.Title>
                                 <Card.Text>
-                                    Informações de objetivos de cada turma SENAI.
+                                    Informações de cada turma SENAI.
                                 </Card.Text>
-                                <Button variant="danger">Ir para página de objetivos</Button>
+                                <Button variant="danger" href="/turma">Ir para página de turmas</Button>
                             </Card.Body>
                         </Card>
                     </Col>
