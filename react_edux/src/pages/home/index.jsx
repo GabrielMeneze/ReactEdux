@@ -45,7 +45,7 @@ const Home = () => {
                                 <Card.Text>
                                     Cursos de ensino técnico das instituições.
                                 </Card.Text>
-                                <Button variant="danger">Ir para página de cursos</Button>
+                                <Button variant="danger" href="/curso">Ir para página de cursos</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -57,7 +57,7 @@ const Home = () => {
                                 <Card.Text>
                                     Informações de cada turma SENAI.
                                 </Card.Text>
-                                <Button variant="danger">Ir para página de turmas</Button>
+                                <Button variant="danger" href="/turma">Ir para página de turmas</Button>
                             </Card.Body>
                         </Card>
                     </Col>

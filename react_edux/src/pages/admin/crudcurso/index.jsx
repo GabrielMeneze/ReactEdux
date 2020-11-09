@@ -147,7 +147,13 @@ const CrudCurso = () => {
                                 return (
                                     <tr key={index}>
                                         <td>{item.titulo}</td>
-                                        <td>{item.idInstituicao}</td>
+                                        {
+                                            instituicoes.map((item, index) => {
+                                                return (
+                                                    <td>{item.nome}</td>
+                                                )
+                                            })
+                                        }
                                         <td style={{ display: 'flex' }}>
                                             <Button variant="info" value={item.idCurso} onClick={event => editar(event)} >Editar</Button>
                                             <Button variant="danger" value={item.idCurso} onClick={event => excluir(event)} style={{ marginLeft: '10px' }}>Excluir</Button>
