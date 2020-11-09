@@ -142,6 +142,7 @@ const CrudTurma = () => {
                 <Table style={{ background: '#FFFFFF', borderRadius: '10px', marginTop: '2em' }} striped hover>
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Curso</th>
                             <th>Descrição</th>
                             <th>Ações</th>
@@ -152,7 +153,8 @@ const CrudTurma = () => {
                             turmas.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{item.idCurso}</td>
+                                        <td>{item.idTurma}</td>
+                                        <td>{item.idCursoNavigation.titulo}</td>
                                         <td>{item.nome}</td>
                                         <td style={{ display: 'flex' }}>
                                             <Button variant="info" value={item.IdTurma} onClick={event => editar(event)} >Editar</Button>

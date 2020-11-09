@@ -120,7 +120,7 @@ const CrudCurso = () => {
                             <Form.Group controlId="formBasicInstituicao">
                                 <Form.Label>Instituição</Form.Label>
                                 <Form.Control as="select" size="sg" custom defaultValue={idInstituicao} onChange={event => setIdInstituicao(parseInt(event.target.value))}>
-                                    <option value="">Selecione uma instituição...</option>
+                                    <option value={0}>Selecione uma instituição...</option>
                                     {
                                         instituicoes.map((item, index) => {
                                             return (
@@ -137,6 +137,7 @@ const CrudCurso = () => {
                 <Table style={{ background: '#FFFFFF', borderRadius: '10px', marginTop: '2em' }} striped hover>
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Titulo</th>
                             <th>Instituição</th>
                             <th>Ações</th>
@@ -147,6 +148,7 @@ const CrudCurso = () => {
                             cursos.map((item, index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>{item.idCurso}</td>
                                         <td>{item.titulo}</td>
                                         <td>{item.idInstituicaoNavigation.nome}</td>
                                         <td style={{ display: 'flex' }}>
